@@ -1,0 +1,15 @@
+# OS bestanden
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor mappen
+.vscode/
+.idea/
+*.suo
+*.user
+
+# Node (mocht je later een build tool toevoegen)
+node_modules/
+dist/
+.env
