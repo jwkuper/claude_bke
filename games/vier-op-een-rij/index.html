@@ -13,6 +13,28 @@
 
     <h1>Vier op een Rij</h1>
 
+    <div class="spelmode-kiezer">
+      <button id="mode-2spelers" class="mode-toggle actief">👥 2 Spelers</button>
+      <button id="mode-ai" class="mode-toggle">🤖 Tegen AI</button>
+    </div>
+
+    <div class="ai-opties" id="ai-opties" style="display:none">
+      <label>Moeilijkheid:
+        <select id="moeilijkheid">
+          <option value="1">1 – Makkelijk</option>
+          <option value="2">2</option>
+          <option value="3" selected>3</option>
+          <option value="4">4</option>
+          <option value="5">5 – Moeilijk</option>
+        </select>
+      </label>
+      <div class="beginner-selectie">
+        <span>Begint:</span>
+        <button id="begint-speler" class="mode-toggle actief">Speler 1</button>
+        <button id="begint-ai" class="mode-toggle">AI</button>
+      </div>
+    </div>
+
     <div class="scorebord">
       <div class="speler" id="speler-1">
         <div class="schijf-preview s1"></div>
@@ -25,7 +47,7 @@
       </div>
       <div class="speler" id="speler-2">
         <div class="schijf-preview s2"></div>
-        <span class="naam">Speler 2</span>
+        <span class="naam" id="naam-2">Speler 2</span>
         <span class="score" id="score-2">0</span>
       </div>
     </div>
