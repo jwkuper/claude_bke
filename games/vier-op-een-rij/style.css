@@ -151,9 +151,37 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s;
+  transition: background 0.15s, border-color 0.15s;
   overflow: hidden;
   position: relative;
+  cursor: pointer;
+}
+
+/* Kolom hover: lichte gloed op lege cellen */
+.cel.kolom-hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Landing preview: geest-schijf op de landingscel */
+.cel.landing-preview::after {
+  content: '';
+  position: absolute;
+  width: 85%;
+  height: 85%;
+  border-radius: 50%;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.cel.landing-preview.preview-s1::after {
+  background: var(--color-speler1);
+  box-shadow: 0 0 12px var(--color-speler1);
+}
+
+.cel.landing-preview.preview-s2::after {
+  background: var(--color-speler2);
+  box-shadow: 0 0 12px var(--color-speler2);
 }
 
 .cel .schijf {

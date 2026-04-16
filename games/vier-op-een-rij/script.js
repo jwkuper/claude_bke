@@ -144,6 +144,7 @@ function verwerkKlik(kolom) {
   const rij = laagsteLegeRij(kolom);
   if (rij === -1) return;
 
+  verwijderHoverPreview();
   bord[rij][kolom] = huidigeSpeler;
   plaatsZetDOM(rij, kolom, huidigeSpeler);
   updateKolomKnoppen();
@@ -419,6 +420,53 @@ kolKnoppenEl.addEventListener('click', (e) => {
     verwerkKlik(Number(knop.dataset.col));
   }
 });
+
+// Klik op een cel in het bord → laat steentje vallen in die kolom
+bordEl.addEventListener('click', (e) => {
+  const cel = e.target.closest('.cel');
+  if (!cel) return;
+  verwerkKlik(Number(cel.dataset.kolom));
+});
+
+// ── Hover preview ────────────────────────────────────────────
+let hoverKolom = -1;
+
+function toonHoverPreview(kolom) {
+  if (!spelActief) return;
+  if (tegenAI && huidigeSpeler === AI_SPELER) return;
+
+  verwijderHoverPreview();
+  hoverKolom = kolom;
+
+  const landingsRij = laagsteLegeRij(kolom);
+
+  for (let r = 0; r < RIJEN; r++) {
+    const cel = getCel(r, kolom);
+    if (!cel) continue;
+    if (bord[r][kolom] === null) {
+      cel.classList.add('kolom-hover');
+    }
+    if (r === landingsRij) {
+      cel.classList.add(`landing-preview`, `preview-s${huidigeSpeler}`);
+    }
+  }
+}
+
+function verwijderHoverPreview() {
+  document.querySelectorAll('.cel.kolom-hover, .cel.landing-preview').forEach(cel => {
+    cel.classList.remove('kolom-hover', 'landing-preview', 'preview-s1', 'preview-s2');
+  });
+  hoverKolom = -1;
+}
+
+bordEl.addEventListener('mouseover', (e) => {
+  const cel = e.target.closest('.cel');
+  if (!cel) return;
+  const kolom = Number(cel.dataset.kolom);
+  if (kolom !== hoverKolom) toonHoverPreview(kolom);
+});
+
+bordEl.addEventListener('mouseleave', verwijderHoverPreview);
 
 nieuwSpelKnop.addEventListener('click', nieuwSpel);
 resetScoreKnop.addEventListener('click', resetScore);
