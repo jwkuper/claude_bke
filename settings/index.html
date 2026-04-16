@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instellingen</title>
+  <link rel="stylesheet" href="../shared/style.css" />
+  <style>
+    body {
+      align-items: flex-start;
+      padding: 48px 24px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-text);
+    }
+
+    .sectie {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .sectie-titel {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--color-muted);
+    }
+
+    .instelling-rij {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .instelling-label {
+      font-size: 0.95rem;
+      color: var(--color-text);
+    }
+
+    .instelling-invoer {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      color: var(--color-text);
+      font-size: 0.9rem;
+      padding: 8px 12px;
+      width: 160px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .instelling-invoer:focus {
+      border-color: var(--color-speler1);
+    }
+
+    .opslaan-balk {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .placeholder-melding {
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      text-align: center;
+      padding: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a class="nav-terug" href="../">← Alle spelletjes</a>
+
+    <h1>Instellingen</h1>
+
+    <div class="sectie">
+      <div class="sectie-titel">Spelersnamen</div>
+      <div class="instelling-rij">
+        <label class="instelling-label" for="naam-speler1">Speler 1</label>
+        <input class="instelling-invoer" id="naam-speler1" type="text" placeholder="Speler 1" maxlength="20" />
+      </div>
+      <div class="instelling-rij">
+        <label class="instelling-label" for="naam-speler2">Speler 2</label>
+        <input class="instelling-invoer" id="naam-speler2" type="text" placeholder="Speler 2" maxlength="20" />
+      </div>
+    </div>
+
+    <div class="sectie">
+      <div class="sectie-titel">Meer instellingen</div>
+      <p class="placeholder-melding">Hier komen toekomstige instellingen zoals thema, geluiden en moeilijkheidsgraad.</p>
+    </div>
+
+    <div class="opslaan-balk">
+      <button class="knop" id="opslaan">Opslaan</button>
+    </div>
+  </div>
+
+  <script>
+    const invoer1 = document.getElementById('naam-speler1');
+    const invoer2 = document.getElementById('naam-speler2');
+
+    // Laad opgeslagen namen
+    invoer1.value = localStorage.getItem('naamSpeler1') || '';
+    invoer2.value = localStorage.getItem('naamSpeler2') || '';
+
+    document.getElementById('opslaan').addEventListener('click', () => {
+      localStorage.setItem('naamSpeler1', invoer1.value.trim() || 'Speler 1');
+      localStorage.setItem('naamSpeler2', invoer2.value.trim() || 'Speler 2');
+      window.location.href = '../';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vier op een Rij</title>
+  <link rel="stylesheet" href="../../shared/style.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <a class="nav-terug" href="../../">← Alle spelletjes</a>
+
+    <h1>Vier op een Rij</h1>
+
+    <div class="scorebord">
+      <div class="speler" id="speler-1">
+        <div class="schijf-preview s1"></div>
+        <span class="naam">Speler 1</span>
+        <span class="score" id="score-1">0</span>
+      </div>
+      <div class="gelijkspel-teller">
+        <span class="naam">Gelijk</span>
+        <span class="score" id="score-gelijk">0</span>
+      </div>
+      <div class="speler" id="speler-2">
+        <div class="schijf-preview s2"></div>
+        <span class="naam">Speler 2</span>
+        <span class="score" id="score-2">0</span>
+      </div>
+    </div>
+
+    <div class="beurt-indicator" id="beurt-indicator">
+      Beurt: <span id="huidige-speler">Speler 1</span>
+    </div>
+
+    <!-- Kolom klikgebieden (boven het bord) -->
+    <div class="kolom-knoppen" id="kolom-knoppen">
+      <div class="kolom-knop" data-col="0">▼</div>
+      <div class="kolom-knop" data-col="1">▼</div>
+      <div class="kolom-knop" data-col="2">▼</div>
+      <div class="kolom-knop" data-col="3">▼</div>
+      <div class="kolom-knop" data-col="4">▼</div>
+      <div class="kolom-knop" data-col="5">▼</div>
+      <div class="kolom-knop" data-col="6">▼</div>
+    </div>
+
+    <div class="bord" id="bord">
+      <!-- 6 rijen × 7 kolommen = 42 cellen, gegenereerd door JS -->
+    </div>
+
+    <div class="bericht" id="bericht"></div>
+
+    <div class="knoppen">
+      <button class="knop" id="nieuw-spel">Nieuw Spel</button>
+      <button class="knop secundair" id="reset-score">Reset Score</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

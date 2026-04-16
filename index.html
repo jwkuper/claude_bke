@@ -3,54 +3,152 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Boter Kaas en Eieren</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Spelletjes</title>
+  <link rel="stylesheet" href="shared/style.css" />
+  <style>
+    body {
+      align-items: flex-start;
+      padding: 48px 24px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    header {
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-shadow: 0 0 24px rgba(100, 180, 255, 0.4);
+    }
+
+    header p {
+      margin-top: 8px;
+      color: var(--color-muted);
+      font-size: 1rem;
+    }
+
+    .spellen-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .spel-kaart {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-xl);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.2s, border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+
+    .spel-kaart:hover {
+      background: var(--color-surface-hover);
+      border-color: var(--color-border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .spel-icoon {
+      font-size: 2.8rem;
+      line-height: 1;
+    }
+
+    .spel-naam {
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .spel-beschrijving {
+      font-size: 0.875rem;
+      color: var(--color-muted);
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .spel-spelen {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-speler1);
+    }
+
+    .nav-onderaan {
+      display: flex;
+      justify-content: center;
+      border-top: 1px solid var(--color-border);
+      padding-top: 24px;
+    }
+
+    .instellingen-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+
+    .instellingen-link:hover {
+      color: var(--color-text);
+    }
+
+    @media (max-width: 400px) {
+      header h1 { font-size: 1.8rem; }
+      .spellen-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h1>Boter Kaas &amp; Eieren</h1>
+    <header>
+      <h1>Spelletjes</h1>
+      <p>Kies een spel om te beginnen</p>
+    </header>
 
-    <div class="scorebord">
-      <div class="speler" id="speler-x">
-        <span class="symbool x">X</span>
-        <span class="naam">Speler 1</span>
-        <span class="score" id="score-x">0</span>
-      </div>
-      <div class="gelijkspel-teller">
-        <span class="naam">Gelijk</span>
-        <span class="score" id="score-gelijk">0</span>
-      </div>
-      <div class="speler" id="speler-o">
-        <span class="symbool o">O</span>
-        <span class="naam">Speler 2</span>
-        <span class="score" id="score-o">0</span>
-      </div>
+    <div class="spellen-grid">
+      <a class="spel-kaart" href="games/bke/">
+        <div class="spel-icoon">⭕</div>
+        <div class="spel-naam">Boter Kaas &amp; Eieren</div>
+        <div class="spel-beschrijving">
+          Het klassieke spel voor 2 spelers. Zet drie op een rij om te winnen.
+        </div>
+        <div class="spel-spelen">Spelen →</div>
+      </a>
+
+      <a class="spel-kaart" href="games/vier-op-een-rij/">
+        <div class="spel-icoon">🔴</div>
+        <div class="spel-naam">Vier op een Rij</div>
+        <div class="spel-beschrijving">
+          Laat schijven vallen en verbind als eerste vier op een rij — horizontaal, verticaal of diagonaal.
+        </div>
+        <div class="spel-spelen">Spelen →</div>
+      </a>
     </div>
 
-    <div class="beurt-indicator" id="beurt-indicator">
-      Beurt: <span id="huidige-speler">X</span>
-    </div>
-
-    <div class="bord" id="bord">
-      <div class="vakje" data-index="0"></div>
-      <div class="vakje" data-index="1"></div>
-      <div class="vakje" data-index="2"></div>
-      <div class="vakje" data-index="3"></div>
-      <div class="vakje" data-index="4"></div>
-      <div class="vakje" data-index="5"></div>
-      <div class="vakje" data-index="6"></div>
-      <div class="vakje" data-index="7"></div>
-      <div class="vakje" data-index="8"></div>
-    </div>
-
-    <div class="bericht" id="bericht"></div>
-
-    <div class="knoppen">
-      <button class="knop" id="nieuw-spel">Nieuw Spel</button>
-      <button class="knop secundair" id="reset-score">Reset Score</button>
-    </div>
+    <nav class="nav-onderaan">
+      <a class="instellingen-link" href="settings/">⚙ Instellingen</a>
+    </nav>
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html>

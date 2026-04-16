@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boter Kaas en Eieren</title>
+  <link rel="stylesheet" href="../../shared/style.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <a class="nav-terug" href="../../">← Alle spelletjes</a>
+    <h1>Boter Kaas &amp; Eieren</h1>
+
+    <div class="scorebord">
+      <div class="speler" id="speler-x">
+        <span class="symbool x">X</span>
+        <span class="naam">Speler 1</span>
+        <span class="score" id="score-x">0</span>
+      </div>
+      <div class="gelijkspel-teller">
+        <span class="naam">Gelijk</span>
+        <span class="score" id="score-gelijk">0</span>
+      </div>
+      <div class="speler" id="speler-o">
+        <span class="symbool o">O</span>
+        <span class="naam">Speler 2</span>
+        <span class="score" id="score-o">0</span>
+      </div>
+    </div>
+
+    <div class="beurt-indicator" id="beurt-indicator">
+      Beurt: <span id="huidige-speler">X</span>
+    </div>
+
+    <div class="bord" id="bord">
+      <div class="vakje" data-index="0"></div>
+      <div class="vakje" data-index="1"></div>
+      <div class="vakje" data-index="2"></div>
+      <div class="vakje" data-index="3"></div>
+      <div class="vakje" data-index="4"></div>
+      <div class="vakje" data-index="5"></div>
+      <div class="vakje" data-index="6"></div>
+      <div class="vakje" data-index="7"></div>
+      <div class="vakje" data-index="8"></div>
+    </div>
+
+    <div class="bericht" id="bericht"></div>
+
+    <div class="knoppen">
+      <button class="knop" id="nieuw-spel">Nieuw Spel</button>
+      <button class="knop secundair" id="reset-score">Reset Score</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

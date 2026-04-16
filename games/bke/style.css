@@ -1,18 +1,5 @@
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #fff;
-}
+/* Stijlen specifiek voor Boter Kaas en Eieren */
+/* Globale reset en variabelen komen uit ../../shared/style.css */
 
 .container {
   display: flex;
@@ -29,7 +16,7 @@ h1 {
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #e0e0e0;
+  color: var(--color-text);
   text-shadow: 0 0 20px rgba(100, 180, 255, 0.4);
 }
 
@@ -39,9 +26,9 @@ h1 {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
   padding: 16px 24px;
   gap: 8px;
 }
@@ -52,13 +39,13 @@ h1 {
   align-items: center;
   gap: 4px;
   padding: 8px 16px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   transition: background 0.3s;
 }
 
 .speler.actief {
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 16px rgba(100, 180, 255, 0.2);
+  background: var(--color-surface-hover);
+  box-shadow: var(--shadow-glow-1);
 }
 
 .symbool {
@@ -67,14 +54,14 @@ h1 {
   line-height: 1;
 }
 
-.symbool.x { color: #64b4ff; }
-.symbool.o { color: #ff6b8a; }
+.symbool.x { color: var(--color-speler1); }
+.symbool.o { color: var(--color-speler2); }
 
 .naam {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #aaa;
+  color: var(--color-muted);
 }
 
 .score {
@@ -91,13 +78,13 @@ h1 {
 
 .gelijkspel-teller .score {
   font-size: 1.2rem;
-  color: #ccc;
+  color: var(--color-muted);
 }
 
 /* Beurt indicator */
 .beurt-indicator {
   font-size: 1rem;
-  color: #ccc;
+  color: var(--color-muted);
   letter-spacing: 1px;
 }
 
@@ -117,9 +104,9 @@ h1 {
 
 .vakje {
   aspect-ratio: 1;
-  background: rgba(255, 255, 255, 0.06);
-  border: 2px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,33 +118,24 @@ h1 {
 }
 
 .vakje:hover:not(.bezet) {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.25);
+  background: var(--color-surface-hover);
+  border-color: var(--color-border-hover);
   transform: scale(1.03);
 }
 
-.vakje.bezet {
-  cursor: default;
-}
-
-.vakje.x {
-  color: #64b4ff;
-}
-
-.vakje.o {
-  color: #ff6b8a;
-}
+.vakje.bezet { cursor: default; }
+.vakje.x     { color: var(--color-speler1); }
+.vakje.o     { color: var(--color-speler2); }
 
 .vakje.winnend {
   background: rgba(255, 220, 80, 0.15);
-  border-color: #ffd750;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+  border-color: var(--color-accent);
   animation: pulse 0.6s ease-in-out infinite alternate;
 }
 
 @keyframes pulse {
   from { box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
-  to   { box-shadow: 0 0 30px rgba(255, 215, 0, 0.7); }
+  to   { box-shadow: var(--shadow-win); }
 }
 
 @keyframes popIn {
@@ -176,7 +154,7 @@ h1 {
   font-size: 1.2rem;
   font-weight: 600;
   min-height: 1.5rem;
-  color: #ffd750;
+  color: var(--color-accent);
   letter-spacing: 1px;
   text-align: center;
 }
@@ -187,43 +165,10 @@ h1 {
   gap: 12px;
 }
 
-.knop {
-  padding: 12px 28px;
-  border: none;
-  border-radius: 12px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  letter-spacing: 0.5px;
-  transition: transform 0.1s, box-shadow 0.2s, opacity 0.2s;
-  background: #64b4ff;
-  color: #0f3460;
-}
-
-.knop:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(100, 180, 255, 0.4);
-}
-
-.knop:active {
-  transform: translateY(0);
-}
-
-.knop.secundair {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ccc;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.knop.secundair:hover {
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.15);
-}
-
 /* Responsive */
 @media (max-width: 400px) {
-  h1 { font-size: 1.4rem; }
-  .vakje { font-size: 2.2rem; border-radius: 10px; }
-  .bord { gap: 8px; }
-  .scorebord { padding: 12px 12px; }
+  h1          { font-size: 1.4rem; }
+  .vakje      { font-size: 2.2rem; border-radius: 10px; }
+  .bord       { gap: 8px; }
+  .scorebord  { padding: 12px; }
 }

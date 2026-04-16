@@ -1,0 +1,91 @@
+/* Gedeelde CSS variabelen en basis stijlen */
+
+:root {
+  --bg-gradient: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+
+  --color-speler1: #64b4ff;
+  --color-speler2: #ff6b8a;
+  --color-accent:  #ffd750;
+  --color-text:    #e0e0e0;
+  --color-muted:   #aaa;
+
+  --color-surface:       rgba(255, 255, 255, 0.06);
+  --color-surface-hover: rgba(255, 255, 255, 0.12);
+  --color-border:        rgba(255, 255, 255, 0.12);
+  --color-border-hover:  rgba(255, 255, 255, 0.25);
+
+  --radius-xl: 20px;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+
+  --shadow-glow-1: 0 0 20px rgba(100, 180, 255, 0.35);
+  --shadow-glow-2: 0 0 20px rgba(255, 107, 138, 0.35);
+  --shadow-win:    0 0 30px rgba(255, 215, 0, 0.6);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-gradient);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--color-text);
+}
+
+/* Navigatie terug knop */
+.nav-terug {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+  align-self: flex-start;
+}
+
+.nav-terug:hover {
+  color: var(--color-text);
+}
+
+/* Gedeelde knop stijlen */
+.knop {
+  padding: 12px 28px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  transition: transform 0.1s, box-shadow 0.2s;
+  background: var(--color-speler1);
+  color: #0f3460;
+}
+
+.knop:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-1);
+}
+
+.knop:active {
+  transform: translateY(0);
+}
+
+.knop.secundair {
+  background: var(--color-surface);
+  color: var(--color-muted);
+  border: 1px solid var(--color-border);
+}
+
+.knop.secundair:hover {
+  background: var(--color-surface-hover);
+  box-shadow: none;
+}
